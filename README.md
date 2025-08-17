@@ -3,7 +3,7 @@ based on <https://docs.dcipher.network/quickstart/randomness/#3-create-a-randomn
 
 ## TODO
 - remove examples which come with plain `forge init`
-- add the command to `forge init` this as the template
+- improve README-file with the command to `forge init` this as the template
 - adapt deployment facilities
 - testing is a TODO too
 - check other things to adapt into this

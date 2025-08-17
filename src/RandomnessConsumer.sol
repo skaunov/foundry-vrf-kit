@@ -19,7 +19,13 @@ contract RandomConsumer is RandomnessReceiverBase {
         bool exists;
     }
 
-    constructor(address randomnessSender) RandomnessReceiverBase(randomnessSender) {}
+    constructor(address randomnessSender)
+        RandomnessReceiverBase(
+            randomnessSender,
+            // Put the actual owner here!
+            msg.sender
+        )
+    {}
 
     /// @notice It's a great idea to optimize this out along to the concrete set up!
     function requestRandomness(bool withSubscription, uint32 callbackGasLimit)
@@ -45,7 +51,7 @@ contract RandomConsumer is RandomnessReceiverBase {
 
     /// @notice called back by the `randomnessSender` to fulfill the request
     function onRandomnessReceived(uint256 requestID, bytes32 _randomness) internal override {
-        StateAwaitingCallback fulfiedRequest = pendingRequests[requestID];
+        StateAwaitingCallback memory fulfiedRequest = pendingRequests[requestID];
         delete pendingRequests[requestID];
         require(fulfiedRequest.exists == true, "Only a requested Id can be called back!");
 

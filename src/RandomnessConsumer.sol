@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-// based on <https://docs.dcipher.network/quickstart/randomness/#3-create-a-randomness-consumer-contract>
-
 // <https://docs.dcipher.network/>
 import { RandomnessReceiverBase } from "lib/randomness-solidity/src/RandomnessReceiverBase.sol";
 
@@ -53,5 +51,12 @@ contract RandomConsumer is RandomnessReceiverBase {
         // Use `_randomness` in the final part of your logic/actions.
         
         emit RandomnessFulfilled(requestID, _randomness);
+    }
+
+    /// @notice Getter function to retrieve the state of a pending request
+    /// @param requestId The ID of the request to check.
+    /// @return exists Whether the request exists.  
+    function getPendingRequestState(uint256 requestId) external view returns (bool exists) {
+        return pendingRequests[requestId].exists;
     }
 }

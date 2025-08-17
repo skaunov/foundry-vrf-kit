@@ -1,66 +1,40 @@
-## Foundry
+# Foundry Starter Kit
+based on <https://docs.dcipher.network/quickstart/randomness/#3-create-a-randomness-consumer-contract>
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## TODO
+- remove examples which come with plain `forge init`
+- add the command to `forge init` this as the template
+- adapt deployment stuff
+- testing is a TODO too
+- check other things to adapt into this
 
-Foundry consists of:
+## Getting Started
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### Requirements
 
-## Documentation
+Please install the following:
 
-https://book.getfoundry.sh/
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - You'll know you've done it right if you can run `git --version`
+- [Foundry / Foundryup](https://github.com/gakonst/foundry)
+  - This will install `forge`, `cast`, and `anvil`
+  - You can test you've installed them right by running `forge --version` and get an output like: `forge 0.2.0 (f016135 2022-07-04T00:15:02.930499Z)`
+  - To get the latest of each, just run `foundryup`
 
-## Usage
+### Quickstart
 
-### Build
-
-```shell
-$ forge build
+```sh
+git clone https://github.com/skaunov/foundry-vrf-kit
+cd foundry-vrf-kit
 ```
 
-### Test
+### Install dependencies as follows:
 
-```shell
-$ forge test
-```
+Run `forge install` to install dependencies. [Foundry uses git submodules](https://book.getfoundry.sh/projects/dependencies) as its dependency management system.
 
-### Format
+> ⚠️  when running `forge install`, you may see an error message if you have uncomitted changes in your repo.  Read the message carefully - it may inform you that you can add the `--no-commit` flag to each of these `install` commands if your workspace has uncommitted changes.
 
-```shell
-$ forge fmt
-```
+You can update dependencies by running `forge update`.
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+### TODO Testing
+To check that everything is compiling and working as intended after cloning and installing dependencies, run `forge test`. All tests should pass.
